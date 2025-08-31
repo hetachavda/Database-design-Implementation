@@ -96,9 +96,9 @@ GROUP BY d.DealershipName;
 
 ## 👨‍💻 Contributors
 
+* **Heta Chavda** (NF1014555)
 * **Kelechi C. Uchendu** (NF1002048)
 * **Renato Hiroyuki Oshiro** (NF1011996)
-* **Heta Chavda** (NF1014555)
 
 Course: **CPSC-500-1 SQL Databases**
 Professor: **Abbas Hamze**
