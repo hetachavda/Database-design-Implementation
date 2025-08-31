@@ -1,4 +1,4 @@
-# Database-design-Implementation
+
 # 🚗 Car Dealership Database System  
 
 A comprehensive **SQL-based relational database** designed and implemented to manage the operations of a car dealership. This project demonstrates **database design, normalization, DDL/DML/DQL implementation, and advanced data retrieval queries**.  
@@ -80,3 +80,41 @@ FROM Sales s
 JOIN Inventory i ON s.CarID = i.CarID
 JOIN Dealership d ON i.DealershipID = d.DealershipID
 GROUP BY d.DealershipName;
+````
+
+---
+
+## ✅ Results & Benefits
+
+* **Integrated System:** Links core dealership operations seamlessly.
+* **Data-Driven Insights:** Enables managers to track sales performance, customer services, and inventory.
+* **Scalability:** Supports adding more dealerships and expanding features.
+* **Operational Efficiency:** Streamlines sales, services, payments, and warranty tracking.
+* **ML-Ready Data:** Facilitates predictive analytics for business growth.
+
+---
+
+## 👨‍💻 Contributors
+
+* **Kelechi C. Uchendu** (NF1002048)
+* **Renato Hiroyuki Oshiro** (NF1011996)
+* **Heta Chavda** (NF1014555)
+
+Course: **CPSC-500-1 SQL Databases**
+Professor: **Abbas Hamze**
+
+---
+
+## 📂 Tech Stack
+
+* **MySQL** (Database)
+* **SQL DDL/DML/DQL**
+* **Normalization Techniques**
+
+---
+
+## 📌 Conclusion
+
+This project showcases the full lifecycle of database development — from **design** to **implementation** and **analysis**. The Car Dealership Database System provides a **scalable, reliable, and efficient** solution for real-world dealership management.
+
+---
