@@ -111,6 +111,8 @@ Professor: **Abbas Hamze**
 * **SQL DDL/DML/DQL**
 * **Normalization Techniques**
 
+---
+
 ## 📌 Conclusion
 
 This project showcases the full lifecycle of database development — from **design** to **implementation** and **analysis**. The Car Dealership Database System provides a **scalable, reliable, and efficient** solution for real-world dealership management.
