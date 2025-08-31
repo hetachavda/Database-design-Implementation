@@ -115,6 +115,6 @@ Professor: **Abbas Hamze**
 
 ## 📌 Conclusion
 
-This project showcases the full lifecycle of database development — from **design** to **implementation** and **analysis**. The Car Dealership Database System provides a **scalable, reliable, and efficient** solution for real-world dealership management.
+This project showcases the full lifecycle of database development from **design** to **implementation** and **analysis**. The Car Dealership Database System provides a **scalable, reliable, and efficient** solution for real-world dealership management.
 
 ---
