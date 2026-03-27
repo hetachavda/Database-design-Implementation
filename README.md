@@ -52,7 +52,32 @@ Key entities and relationships include:
 - **Warranty (WarrantyID, CarID, CustomerID, StartDate, EndDate, CoverageDetails)**  
 
 ---
+## 🧩 Entity Relationship Diagram (ERD)
+<img src="ERD.png" width="700">
 
+*Figure: Entity Relationship Diagram representing relationships between customers, cars, sales, and services.*
+
+---
+
+## 🏗️ Database Schema (3NF)
+<img src="schema_3nf.jpg" width="700">
+
+*Figure: Normalized database schema (Third Normal Form) ensuring data integrity and eliminating redundancy.*
+
+---
+
+## 📊 SQL Query Example
+<img src="sql_query.png" width="700">
+
+*Figure: Sample SQL aggregation query used for business insights.*
+
+---
+
+## 📈 SQL Query Output (Sales Analysis)
+<img src="sql_output.png" width="700">
+
+*Figure: Output of SQL query showing dealership sales performance.*
+---
 ## ⚙️ Implementation  
 
 - **DDL (Data Definition Language):**  
