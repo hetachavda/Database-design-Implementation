@@ -1,145 +1,150 @@
+<div align="center">
 
-# 🚗 Car Dealership Database System  
+![Banner](assets/banner.svg)
 
-A comprehensive **SQL-based relational database** designed and implemented to manage the operations of a car dealership. This project demonstrates **database design, normalization, DDL/DML/DQL implementation, and advanced data retrieval queries**.  
+# 🗄️ Car Dealership Database System
+### Relational Database Design & Implementation — MySQL, Normalized to 3NF
 
----
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-025E8C?style=for-the-badge&logo=amazonrds&logoColor=white)
+![Database](https://img.shields.io/badge/Relational%20DB-003545?style=for-the-badge&logo=postgresql&logoColor=white)
+![ERD](https://img.shields.io/badge/Design-ERD%20%2B%203NF-336791?style=for-the-badge&logo=databricks&logoColor=white)
 
-## 📌 Project Overview  
-The Car Dealership Database System provides an efficient way to store and manage data related to:  
-- Customers  
-- Cars  
-- Employees  
-- Dealerships  
-- Inventory  
-- Sales  
-- Services  
-- Payments  
-- Warranties  
+![Type](https://img.shields.io/badge/Project-Database%20Design%20%26%20Implementation-blue?style=flat-square)
+![Entities](https://img.shields.io/badge/Entities-9%20Tables-brightgreen?style=flat-square)
+![Normalization](https://img.shields.io/badge/Normalization-3NF-orange?style=flat-square)
+![Language](https://img.shields.io/badge/SQL-DDL%20%C2%B7%20DML%20%C2%B7%20DQL-e34948?style=flat-square)
 
-The system ensures **scalability, reliability, and data integrity** while supporting critical business processes such as inventory management, sales tracking, service scheduling, and customer relationship management.  
+</div>
 
 ---
 
-## 🎯 Objectives  
-- Build a **robust and normalized** relational database.  
-- Simplify **inventory, sales, and service management**.  
-- Ensure **data accuracy** and eliminate redundancy.  
-- Support **complex data queries** for reporting and decision-making.  
-- Enable **future integration with Machine Learning tasks** (sales forecasting, customer trends, etc.).  
+## 📌 Project at a Glance
+
+| | |
+|---|---|
+| **🎯 Goal** | Design & implement a relational database to run car-dealership operations |
+| **🧠 Approach** | ERD → 3NF normalization → SQL schema → analytical queries |
+| **📊 Scope** | 9 interconnected entities covering the full sales-to-service lifecycle |
+| **⚙️ Delivery** | MySQL schema, ER diagram, sample queries + report & presentation |
 
 ---
 
-## 🏗️ Database Design  
+## 🧩 Business Problem
 
-### Entity-Relationship Diagram (ERD)  
-Key entities and relationships include:  
-- **Customers** ↔ Sales, Services, Warranty  
-- **Cars** ↔ Inventory, Sales, Services, Warranty  
-- **Employees** ↔ Sales  
-- **Dealerships** ↔ Employees, Inventory  
-- **Payments** ↔ Sales  
+A multi-location car dealership tracks customers, vehicles, staff, inventory, sales, service, payments, and warranties — often in disconnected spreadsheets. That causes duplicated data, broken links between a sale and its payment, and no reliable way to report performance.
 
-### Schema Highlights  
-- **Customers (CustomerID, FirstName, LastName, Email, PhoneNumber, AddressID)**  
-- **Cars (CarID, Make, Model, Year, Price, VIN)**  
-- **Dealerships (DealershipID, Name, AddressID, Phone)**  
-- **Employees (EmployeeID, FirstName, LastName, Position, Department, DealershipID)**  
-- **Inventory (InventoryID, CarID, DealershipID, StockQuantity)**  
-- **Sales (SaleID, CustomerID, EmployeeID, CarID, SaleDate, SalePrice)**  
-- **Services (ServiceID, CarID, CustomerID, ServiceDate, Description, Cost)**  
-- **Payments (PaymentID, SaleID, PaymentMethod, Date, Amount)**  
-- **Warranty (WarrantyID, CarID, CustomerID, StartDate, EndDate, CoverageDetails)**  
+> 🚗 **Core question:** *How do we model dealership operations as one integrated, normalized database so that sales, service, payments, and warranties stay consistent and are easy to query for decisions?*
 
----
-## 🧩 Entity Relationship Diagram (ERD)
-<img src="ERD.png" width="700">
-
-*Figure: Entity Relationship Diagram representing relationships between customers, cars, sales, and services.*
+A well-designed schema removes redundancy, protects data integrity, and unlocks reporting like total sales by dealership or service cost by customer.
 
 ---
 
-## 🏗️ Database Schema (3NF)
-<img src="schema_3nf.jpg" width="700">
+## 🗂️ Schema & Entities
 
-*Figure: Normalized database schema (Third Normal Form) ensuring data integrity and eliminating redundancy.*
+Nine tables in **Third Normal Form (3NF)**, linked by primary and foreign keys.
 
----
-
-## 📊 SQL Query Example
-<img src="sql_query.png" width="700">
-
-*Figure: Sample SQL aggregation query used for business insights.*
-
----
-
-## 📈 SQL Query Output (Sales Analysis)
-<img src="sql_output.png" width="700">
-
-*Figure: Output of SQL query showing dealership sales performance.*
----
-## ⚙️ Implementation  
-
-- **DDL (Data Definition Language):**  
-  Created normalized tables with appropriate constraints and foreign keys.  
-
-- **DML (Data Manipulation Language):**  
-  Inserted sample data for Customers, Cars, Dealerships, Employees, Sales, Services, Payments, and Warranties.  
-
-- **DQL (Data Query Language):**  
-  Advanced queries for retrieving insights such as:  
-  - All customers and their car purchases  
-  - Total sales by dealership  
-  - Customers who purchased a specific model (e.g., Toyota Corolla)  
-  - Inventory details across dealerships  
-  - Aggregate service costs by customer  
+| Entity | Key Columns | Relationships |
+|---|---|---|
+| 👤 **Customers** | CustomerID (PK), FirstName, LastName, Email, Phone, AddressID | → Sales, Services, Warranty |
+| 🚗 **Cars** | CarID (PK), Make, Model, Year, Price, VIN | → Inventory, Sales, Services, Warranty |
+| 🏢 **Dealerships** | DealershipID (PK), Name, AddressID, Phone | → Employees, Inventory |
+| 🧑‍💼 **Employees** | EmployeeID (PK), Name, Position, Department, DealershipID (FK) | ← Dealerships |
+| 📦 **Inventory** | InventoryID (PK), CarID (FK), DealershipID (FK), StockQuantity | ← Cars, Dealerships |
+| 💰 **Sales** | SaleID (PK), CustomerID, EmployeeID, CarID (FK), SaleDate, SalePrice | → Payments |
+| 🔧 **Services** | ServiceID (PK), CarID, CustomerID (FK), ServiceDate, Description, Cost | ← Cars, Customers |
+| 💳 **Payments** | PaymentID (PK), SaleID (FK), PaymentMethod, Date, Amount | ← Sales |
+| 🛡️ **Warranty** | WarrantyID (PK), CarID, CustomerID (FK), StartDate, EndDate, Coverage | ← Cars, Customers |
 
 ---
 
-## 📊 Sample Query  
+## 🔬 Methodology
 
-```sql
--- Retrieve total sales by dealership
-SELECT d.DealershipName, SUM(s.SalePrice) AS TotalSales
-FROM Sales s
-JOIN Inventory i ON s.CarID = i.CarID
-JOIN Dealership d ON i.DealershipID = d.DealershipID
-GROUP BY d.DealershipName;
-````
-
----
-
-## ✅ Results & Benefits
-
-* **Integrated System:** Links core dealership operations seamlessly.
-* **Data-Driven Insights:** Enables managers to track sales performance, customer services, and inventory.
-* **Scalability:** Supports adding more dealerships and expanding features.
-* **Operational Efficiency:** Streamlines sales, services, payments, and warranty tracking.
-* **ML-Ready Data:** Facilitates predictive analytics for business growth.
+```
+DESIGN                     NORMALIZE                 IMPLEMENT & QUERY
+────────────────           ────────────────          ────────────────
+1. Identify entities       1. Apply 1NF → 2NF → 3NF   1. Write DDL: CREATE
+   & business domains       2. Remove redundancy         TABLE + constraints
+2. Draw ERD with           3. Enforce integrity via   2. DML: INSERT sample
+   relationships              PK / FK constraints         records
+3. Define attributes       4. Validate dependencies   3. DQL: analytical
+   & candidate keys           are on the key only          SELECT / JOIN / GROUP
+```
 
 ---
 
-## 👨‍💻 Contributors
+## 📊 Database Schema Dashboard
 
-* **Heta Chavda** (NF1014555)
-* **Kelechi C. Uchendu** (NF1002048)
-* **Renato Hiroyuki Oshiro** (NF1011996)
+<div align="center">
 
-Course: **CPSC-500-1 SQL Databases**
-Professor: **Abbas Hamze**
+![Dashboard](assets/dashboard.svg)
 
----
+*Entity-relationship map of the 9-table dealership schema and the analytical queries it powers, built from the project's ERD and MySQL implementation. Row counts are illustrative sample volumes.*
 
-## 📂 Tech Stack
-
-* **MySQL** (Database)
-* **SQL DDL/DML/DQL**
-* **Normalization Techniques**
+</div>
 
 ---
 
-## 📌 Conclusion
+## 📈 Key Insights
 
-This project showcases the full lifecycle of database development from **design** to **implementation** and **analysis**. The Car Dealership Database System provides a **scalable, reliable, and efficient** solution for real-world dealership management.
+- **One integrated model** links a sale to its customer, car, employee, payment, and warranty with no duplicated data
+- **3NF normalization** removes redundancy so every fact is stored once and updates stay consistent
+- **Foreign-key constraints** guarantee referential integrity — no orphan sales, payments, or services
+- **Multi-dealership support** lets the same schema scale to additional locations without redesign
+- **Analytical queries** answer real questions: total sales by dealership, service cost by customer, inventory by location
 
 ---
+
+## 💼 Business Impact
+
+| Area | Value |
+|---|---|
+| 🧹 **Data quality** | Redundancy removed and integrity enforced through 3NF + FK constraints |
+| 📊 **Reporting** | Aggregate sales, service, and payment analysis via SQL JOINs and GROUP BY |
+| 🏢 **Scalability** | Add dealerships, staff, and inventory without changing the core design |
+| 🔗 **Traceability** | Every payment ties back to a sale; every warranty to a car and customer |
+| 🔮 **Next step** | Clean relational base ready for ML on sales forecasting & customer trends |
+
+---
+
+## 🛠️ Technologies Used
+
+| Category | Tools |
+|---|---|
+| **Database** | MySQL (relational) |
+| **Design** | Entity-Relationship Diagram, 3NF normalization |
+| **SQL** | DDL (schema), DML (data), DQL (queries) |
+| **Deliverables** | ERD image, normalized schema diagram, query outputs |
+
+---
+
+## 📁 Repository Contents
+
+```
+Car Dealership Database System/
+├── 📁 assets/
+│   ├── 🎨 banner.svg             # Repository banner
+│   ├── 📊 dashboard.svg          # Database schema dashboard
+│   ├── 🖼️ ERD.png                # Entity-Relationship Diagram
+│   ├── 🖼️ schema_3nf.jpg         # Normalized (3NF) schema
+│   ├── 🖼️ sql_query.png          # Example analytical query
+│   └── 🖼️ sql_output.png         # Query result set
+├── 📁 docs/
+│   ├── 📄 Final Report.docx      # Design rationale & documentation
+│   └── 📄 Project Presentation.pptx  # Summary slides
+├── 📁 outputs/                   # Additional query outputs
+└── 📝 README.md                  # Project overview
+```
+
+---
+
+<div align="center">
+
+**Heta Chavda** — Data Analytics | Database Design | SQL
+
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hetachavda)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/hetachavda)
+
+⭐ *Found this useful? Give it a star!*
+
+</div>
